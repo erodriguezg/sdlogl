@@ -13,6 +13,7 @@ class Display {
 public:
     Display(int width, int height, const std::string &title);
     void update ();
+    void clear(float r, float g, float b, float a);
     virtual ~Display();
     bool isClosed();
 protected:
