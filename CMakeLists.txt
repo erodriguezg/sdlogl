@@ -15,7 +15,7 @@ project(sdlogl)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(sdlogl main.cpp Display.cpp Display.h)
+add_executable(sdlogl main.cpp Display.cpp Display.h Shader.cpp Shader.h)
 
 find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
