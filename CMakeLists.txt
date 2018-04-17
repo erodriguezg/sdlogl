@@ -1,6 +1,7 @@
 # PAQUETES UBUNTU:
 #SDL
 #sudo apt-get install libsdl2-dev
+#sudo apt-get install libsdl2-image-dev
 #OPENGL
 #sudo apt install mesa-utils
 #GLUT
@@ -14,17 +15,19 @@ cmake_minimum_required(VERSION 3.10)
 project(sdlogl)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-add_executable(sdlogl main.cpp Display.cpp Display.h Shader.cpp Shader.h Mesh.cpp Mesh.h)
+add_executable(sdlogl main.cpp Display.cpp Display.h Shader.cpp Shader.h Mesh.cpp Mesh.h Texture.cpp Texture.h)
 
 find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 
-include_directories(${SDL2_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS})
+include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR} ${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS})
 
 string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES_FIX)
-target_link_libraries(sdlogl ${SDL2_LIBRARIES_FIX} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+target_link_libraries(sdlogl ${SDL2_LIBRARIES_FIX} ${SDL2_IMAGE_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
 #copy resources
 file(COPY res DESTINATION ${CMAKE_BINARY_DIR})

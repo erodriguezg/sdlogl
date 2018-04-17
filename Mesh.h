@@ -10,10 +10,13 @@
 
 class Vertex {
 public:
-    Vertex(const glm::vec3 &pos);
+    Vertex(const glm::vec3 &pos, const glm::vec2 &texCoord);
+    const glm::vec3 &getPos();
+    const glm::vec2 &getTexCoord();
 protected:
 private:
     glm::vec3 pos;
+    glm::vec2 texCoord;
 };
 
 class Mesh {
@@ -27,6 +30,7 @@ private:
 
     enum {
         POSITION_VB,
+        TEXCOORD_VB,
         NUM_BUFFERS
     };
 
