@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <GL/glew.h>
+#include "Transform.h"
 
 class Shader {
 
@@ -17,11 +18,19 @@ public:
     virtual ~Shader();
 
     void bind();
+    void update(const Transform &transform);
 
 private:
     static const unsigned int NUM_SHADERS = 2;
+
+    enum {
+        TRANSFORM_U,
+        NUM_UNIFORMS
+    };
+
     GLuint program;
     GLuint shaders[NUM_SHADERS];
+    GLuint uniforms[NUM_UNIFORMS];
 };
 
 
