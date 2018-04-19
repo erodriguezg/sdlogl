@@ -10,6 +10,7 @@
 #include <iostream>
 #include <GL/glew.h>
 #include "Transform.h"
+#include "Camera.h"
 
 class Shader {
 
@@ -18,7 +19,7 @@ public:
     virtual ~Shader();
 
     void bind();
-    void update(const Transform &transform);
+    void update(const Transform &transform, const Camera &camera);
 
 private:
     static const unsigned int NUM_SHADERS = 2;

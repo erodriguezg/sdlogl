@@ -17,7 +17,7 @@ project(sdlogl)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-add_executable(sdlogl main.cpp Display.cpp Display.h Shader.cpp Shader.h Mesh.cpp Mesh.h Texture.cpp Texture.h Transform.h)
+add_executable(sdlogl main.cpp Display.cpp Display.h Shader.cpp Shader.h Mesh.cpp Mesh.h Texture.cpp Texture.h Transform.h Camera.cpp Camera.h)
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)

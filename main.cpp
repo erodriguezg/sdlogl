@@ -3,9 +3,13 @@
 #include "Mesh.h"
 #include "Texture.h"
 #include "Transform.h"
+#include "Camera.h"
+
+#define WITDH 1024
+#define HEIGHT 768
 
 int main() {
-    Display display(800, 600, "Hello world");
+    Display display(WITDH, HEIGHT, "Hello world");
 
     Vertex vertices[] = {
             Vertex(glm::vec3(-0.5, -0.5, 0), glm::vec2(0.0, 0.0)),
@@ -16,6 +20,7 @@ int main() {
     Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
     Shader shader("./res/basicShader");
     Texture texture("./res/bricks.jpg");
+    Camera camera(glm::vec3(0,0,-3), 70.0f, (float)WITDH/(float)HEIGHT, 0.01f, 1000.0f);
     Transform transform;
 
     float counter = 0.0f;
@@ -26,13 +31,16 @@ int main() {
         float sinCounter = sinf(counter);
         float cosCounter = cosf(counter);
 
-        transform.getPosition().x = sinf(counter);
+        transform.getPosition().x = sinCounter;
+        transform.getPosition().z = cosCounter;
+        transform.getRotation().x = counter;
+        transform.getRotation().y = counter;
         transform.getRotation().z = counter;
-        transform.setScale(glm::vec3(cosCounter, cosCounter, cosCounter));
+        //transform.setScale(glm::vec3(cosCounter, cosCounter, cosCounter));
 
         shader.bind();
         texture.bind(0);
-        shader.update(transform);
+        shader.update(transform, camera);
         mesh.draw();
         display.update();
 
