@@ -36,8 +36,8 @@ int main() {
 
         transform.getPosition().x = sinCounter;
         transform.getPosition().z = cosCounter;
-        transform.getRotation().x = counter;
-        transform.getRotation().y = counter;
+        transform.getRotation().x = -0.1;
+        transform.getRotation().y = counter *-2;
         transform.getRotation().z = counter;
         //transform.setScale(glm::vec3(cosCounter, cosCounter, cosCounter));
 
