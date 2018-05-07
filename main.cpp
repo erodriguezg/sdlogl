@@ -8,7 +8,7 @@
 #define WITDH 1024
 #define HEIGHT 768
 
-int main() {
+int main(int argc, char* args[]) {
     Display display(WITDH, HEIGHT, "Hello world");
 
     Vertex vertices[] = {
